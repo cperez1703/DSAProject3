@@ -6,3 +6,7 @@
 #define DSAPROJECT3_REDBLACKTREE_H
 
 #endif //DSAPROJECT3_REDBLACKTREE_H
+
+class RedBlackTree{
+
+};

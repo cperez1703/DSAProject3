@@ -3,7 +3,7 @@ project(dsaproject3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(dsaproject3 main.cpp)
+add_executable(dsaproject3 main.cpp Window.h Database.h RedBlackTree.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML/lib/cmake/SFML)

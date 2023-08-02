@@ -6,3 +6,7 @@
 #define DSAPROJECT3_DATABASE_H
 
 #endif //DSAPROJECT3_DATABASE_H
+
+class Database{
+
+};
