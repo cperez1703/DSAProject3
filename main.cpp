@@ -6,6 +6,8 @@
 
 int main() {
     Window w(500,500,"Welcome");
+    sf::Text welcome;
+    welcome.setString("Sonny");
     w.DisplayWindow();
     return 0;
 }
