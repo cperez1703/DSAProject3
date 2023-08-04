@@ -7,6 +7,41 @@
 
 #endif //DSAPROJECT3_DATABASE_H
 
-class Database{
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "Artist.h"
+using namespace std;
 
+class Database{
+private:
+    vector<Artist> artists;
+public:
+    Database(string file);
 };
+
+Database::Database(string file) {
+    ifstream inFile;
+    inFile.open(file);
+    string line;
+
+    string familiar;
+    string name;
+    string genre;
+    while(getline(inFile, line)){
+        getline(inFile, familiar, ',');
+        for(int i = 0; i < 5; i++){
+            getline(inFile, line, ',');
+        }
+        getline(inFile, name, ',');
+        getline(inFile, line, ',');
+        getline(inFile, genre, ',');
+        for(int i = 0; i < 25; i++){
+            getline(inFile, line, ',');
+        }
+        artists.push_back(Artist(familiar, name, genre));
+        cout << familiar << name << genre << endl;
+    }
+    artists.pop_back(); // deletes last element(not sure why but adds the last element twice)
+    inFile.close();
+}

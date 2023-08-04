@@ -5,7 +5,8 @@
 #include "RedBlackTree.h"
 
 int main() {
-    Window w(500,500,"Welcome");
-    w.DisplayWindow();
+    Database data("music.csv");
+//    Window w(500,500,"Welcome");
+//    w.DisplayWindow();
     return 0;
 }
