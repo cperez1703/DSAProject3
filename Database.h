@@ -40,7 +40,6 @@ Database::Database(string file) {
             getline(inFile, line, ',');
         }
         artists.push_back(Artist(familiar, name, genre));
-        cout << familiar << name << genre << endl;
     }
     artists.pop_back(); // deletes last element(not sure why but adds the last element twice)
     inFile.close();

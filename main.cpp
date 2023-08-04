@@ -5,10 +5,8 @@
 #include "RedBlackTree.h"
 
 int main() {
-    Database data("music.csv");
-    Window w(500,500,"Welcome");
-    sf::Text welcome;
-    welcome.setString("Sonny");
+//    Database data("music.csv");
+    Window w(1000,1000,"Welcome");
     w.DisplayWindow();
     return 0;
 }
