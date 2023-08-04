@@ -6,7 +6,9 @@
 
 int main() {
     Database data("music.csv");
-//    Window w(500,500,"Welcome");
-//    w.DisplayWindow();
+    Window w(500,500,"Welcome");
+    sf::Text welcome;
+    welcome.setString("Sonny");
+    w.DisplayWindow();
     return 0;
 }
