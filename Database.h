@@ -18,6 +18,7 @@ private:
     vector<Artist> artists;
 public:
     Database(string file);
+    vector<Artist> Artists();
 };
 
 Database::Database(string file) {
@@ -43,4 +44,8 @@ Database::Database(string file) {
     }
     artists.pop_back(); // deletes last element(not sure why but adds the last element twice)
     inFile.close();
+}
+
+vector<Artist> Database::Artists() {
+    return artists;
 }

@@ -9,6 +9,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Time.hpp>
+
 using namespace std;
 
 class Window {
