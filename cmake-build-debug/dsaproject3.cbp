@@ -86,7 +86,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3/Artist.h">
+			<Option target="dsaproject3"/>
+		</Unit>
 		<Unit filename="C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3/Database.h">
+			<Option target="dsaproject3"/>
+		</Unit>
+		<Unit filename="C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3/HashMap.h">
 			<Option target="dsaproject3"/>
 		</Unit>
 		<Unit filename="C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3/RedBlackTree.h">

@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dsaproject3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dsaproject3-Debug-a273f031da97bceb7f14.json",
+					"jsonFile" : "target-dsaproject3-Debug-6bd6ba99c83e7ef25a42.json",
 					"name" : "dsaproject3",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Calvi/CLionProjects/dsaproject3/cmake-build-debug",
-		"source" : "C:/Users/Calvi/CLionProjects/dsaproject3"
+		"build" : "C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3/cmake-build-debug",
+		"source" : "C:/Users/Scao0/CLionProjects/DSAProject3/DSAProject3"
 	},
 	"version" : 
 	{
