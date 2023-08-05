@@ -9,6 +9,11 @@ Artist::Artist(string familiar, string name, string genre, string songId, string
 
 const string& Artist::getGenre() const {
     return genre;
+
+}
+
+const string& Artist::getName() const {
+    return name;
 }
 
 

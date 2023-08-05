@@ -1,15 +1,11 @@
-//
-// Created by Calvi on 8/2/2023.
-//
-
 #ifndef DSAPROJECT3_WINDOW_H
 #define DSAPROJECT3_WINDOW_H
-
-#endif //DSAPROJECT3_WINDOW_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Time.hpp>
+#include "HashMap.h"
+#include "Artist.h"
 
 using namespace std;
 
@@ -23,24 +19,33 @@ private:
     void setText(sf::Text &text, float x, float y);
     void DisplayRedBlack();
     void DisplayHashmap();
+    HashMap hashMap;
+    Artist artist;
+    string genre; // Add the genre member variable
+
 public:
-    Window(int width, int height, string name);
+    Window(int width, int height, string name, string genre);
     void DisplayWindow();
+    void displayArtistsByGenre(sf::RenderWindow& window, HashMap& hashMap, sf::Font& font, int width, int height, const string& genre);
+
 };
 
-Window::Window(int width, int height, string name) {
+void setText(sf::Text text, float d, int offset);
+
+Window::Window(int width, int height, string name, string genre) {
     this->name = name;
     this->width = width;
     this->height = height;
+    this->genre = genre;
     font.loadFromFile("OpenSans-Regular.ttf");
+    //artist = Artist("", "", genre, "", ""); // Initialize the artist member with empty values
 }
 
 void Window::setText(sf::Text &text, float x, float y) {
     sf::FloatRect textRect = text.getLocalBounds();
-    text.setOrigin(textRect.left + textRect.width/2.0f,textRect.top + textRect.height/2.0f);
+    text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top + textRect.height/2.0f);
     text.setPosition(sf::Vector2f(x, y));
 }
-
 
 void Window::DisplayWindow() {
     window.create(sf::VideoMode(width, height), name);
@@ -58,37 +63,34 @@ void Window::DisplayWindow() {
     hashmap.setFillColor(sf::Color::White);
     setText(hashmap, width/2.0f, height/3.0f*2);
 
-
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed){
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if (event.type == sf::Event::TextEntered){
+            if (event.type == sf::Event::TextEntered) {
 
             }
-            if (event.type == sf::Event::KeyPressed){
+            if (event.type == sf::Event::KeyPressed) {
 
             }
-            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased){
-                if(redBlack.getGlobalBounds().contains(event.mouseButton.x,event.mouseButton.y)){
+            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased) {
+                if (redBlack.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                     window.close();
                     DisplayRedBlack();
                 }
-                if(hashmap.getGlobalBounds().contains(event.mouseButton.x,event.mouseButton.y)){
+                if (hashmap.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                     window.close();
                     DisplayHashmap();
                 }
             }
         }
-        window.clear(sf::Color::Transparent); // keep drawings below
+        window.clear(sf::Color::Transparent);
         window.draw(title);
         window.draw(redBlack);
         window.draw(hashmap);
-        window.display();// keep drawings above
+        window.display();
     }
 }
 
@@ -100,30 +102,51 @@ void Window::DisplayRedBlack() {
     back.setFillColor(sf::Color::White);
     setText(back, width/10.0f, height/20.0f);
 
-    while(redBlack.isOpen())
-    {
+    while (redBlack.isOpen()) {
         sf::Event event;
-        while (redBlack.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed){
+        while (redBlack.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 redBlack.close();
             }
-            if (event.type == sf::Event::TextEntered){
+            if (event.type == sf::Event::TextEntered) {
 
             }
-            if (event.type == sf::Event::KeyPressed){
+            if (event.type == sf::Event::KeyPressed) {
 
             }
-            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased){
-                if(back.getGlobalBounds().contains(event.mouseButton.x,event.mouseButton.y)){
+            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased) {
+                if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                     redBlack.close();
                     DisplayWindow();
                 }
             }
         }
-        redBlack.clear(sf::Color::Transparent); // keep drawings below
+        redBlack.clear(sf::Color::Transparent);
         redBlack.draw(back);
-        redBlack.display();// keep drawings above
+        redBlack.display();
+    }
+}
+
+void Window::displayArtistsByGenre(sf::RenderWindow& window, HashMap& hashMap, sf::Font& font, int width, int height, const string& genre) {
+    int yOffset = 50;
+    for (const auto& genreItem : hashMap.getArtistsByGenre(genre)) {
+        sf::Text genreText(genreItem, font, 40);
+        genreText.setFillColor(sf::Color::White);
+        setText(genreText, width / 2.0f, yOffset);
+        window.draw(genreText);
+
+
+        std::vector<Artist> artists = hashMap.getArtistsByGenre(genreItem);
+
+
+        for (const auto& artistItem : artists) {
+            sf::Text artistText(artistItem.getName(), font, 30);
+            artistText.setFillColor(sf::Color::White);
+            yOffset += 30;
+            setText(artistText, width / 2.0f, yOffset);
+            window.draw(artistText);
+        }
+        yOffset += 50;
     }
 }
 
@@ -135,29 +158,34 @@ void Window::DisplayHashmap() {
     back.setFillColor(sf::Color::White);
     setText(back, width/10.0f, height/20.0f);
 
-    while(hash.isOpen())
-    {
+    while (hash.isOpen()) {
         sf::Event event;
-        while (hash.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed){
+        while (hash.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 hash.close();
             }
-            if (event.type == sf::Event::TextEntered){
+            if (event.type == sf::Event::TextEntered) {
 
             }
-            if (event.type == sf::Event::KeyPressed){
+            if (event.type == sf::Event::KeyPressed) {
 
             }
-            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased){
-                if(back.getGlobalBounds().contains(event.mouseButton.x,event.mouseButton.y)){
+            if (event.mouseButton.button == sf::Mouse::Left && event.type == sf::Event::MouseButtonReleased) {
+                if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                     hash.close();
                     DisplayWindow();
                 }
             }
         }
-        hash.clear(sf::Color::Transparent); // keep drawings below
+        hash.clear(sf::Color::Transparent);
+        displayArtistsByGenre(hash, hashMap, font, width, height, genre);
         hash.draw(back);
-        hash.display();// keep drawings above
+        hash.display();
     }
 }
+
+void setText(sf::Text text, float d, int offset) {
+
+}
+
+#endif //DSAPROJECT3_WINDOW_H

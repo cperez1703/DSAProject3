@@ -16,6 +16,7 @@ public:
     Artist(string familiar, string name, string genre, string songId, string year);
 
     const string& getGenre() const;
+    const string& getName() const;
 };
 
 #endif // DSAPROJECT3_ARTIST_H
