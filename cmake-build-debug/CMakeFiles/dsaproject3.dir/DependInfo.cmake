@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Calvi/CLionProjects/DSAProject3/main.cpp" "CMakeFiles/dsaproject3.dir/main.cpp.obj" "gcc" "CMakeFiles/dsaproject3.dir/main.cpp.obj.d"
+  "/Users/alliemontiague/CLionProjects/DSAProject3/Artist.cpp" "CMakeFiles/dsaproject3.dir/Artist.cpp.o" "gcc" "CMakeFiles/dsaproject3.dir/Artist.cpp.o.d"
+  "/Users/alliemontiague/CLionProjects/DSAProject3/main.cpp" "CMakeFiles/dsaproject3.dir/main.cpp.o" "gcc" "CMakeFiles/dsaproject3.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links.

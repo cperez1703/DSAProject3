@@ -4,7 +4,6 @@
 #include "Database.h"
 #include "RedBlackTree.h"
 #include "HashMap.h"
-#pragma once
 
 int main() {
     Database data("music.csv");

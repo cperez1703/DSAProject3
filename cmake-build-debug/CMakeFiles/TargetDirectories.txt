@@ -1,3 +1,3 @@
-C:/Users/Calvi/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/dsaproject3.dir
-C:/Users/Calvi/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Calvi/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/alliemontiague/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/dsaproject3.dir
+/Users/alliemontiague/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/alliemontiague/CLionProjects/DSAProject3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

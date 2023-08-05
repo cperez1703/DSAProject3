@@ -11,6 +11,7 @@
 #include <fstream>
 #include <string>
 #include "Artist.h"
+#pragma once
 using namespace std;
 
 class Database{

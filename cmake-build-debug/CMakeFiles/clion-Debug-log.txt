@@ -1,5 +1,5 @@
-"C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\Calvi\CLionProjects\DSAProject3 -B C:\Users\Calvi\CLionProjects\DSAProject3\cmake-build-debug
--- Found SFML 2.5.1 in C:/SFML/lib/cmake/SFML
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /Users/alliemontiague/CLionProjects/DSAProject3 -B /Users/alliemontiague/CLionProjects/DSAProject3/cmake-build-debug
+-- Found SFML 2.6.0 in /opt/homebrew/lib/cmake/SFML
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Calvi/CLionProjects/DSAProject3/cmake-build-debug
+-- Build files have been written to: /Users/alliemontiague/CLionProjects/DSAProject3/cmake-build-debug
