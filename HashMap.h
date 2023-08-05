@@ -2,23 +2,29 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <list>
 #include "Artist.h"
 #pragma once
 
 
+
 class HashMap {
 private:
-    std::vector<std::vector<Artist>> hashTable;
+
+
+
+    std::vector<std::list<Artist>> hashTable;
+    //changed to a list so each bucket in hash table can
+    int tableSize;
 
 public:
-    HashMap();
+    HashMap(int tableSize);
     int hashFunction(std::string genre);
     void insert(const Artist& artist);
     std::vector<Artist> getArtistsByGenre(std::string genre);
 };
-HashMap::HashMap() {
-
-    hashTable = std::vector<std::vector<Artist>>();
+HashMap::HashMap(int size) : tableSize(size) {
+    hashTable.resize(tableSize);
 }
 
 
@@ -27,27 +33,36 @@ int HashMap::hashFunction(std::string genre) {
     for (char i : genre) {
         hashedValue += int(i);
     }
-    return hashedValue;
+    return hashedValue % tableSize;
 }
 
 void HashMap::insert(const Artist& artist) {
     int index = hashFunction(artist.getGenre());
 
-
-    if (index >= hashTable.size()) {
-        hashTable.resize(index + 1);
+        while (!hashTable[index].empty()) {
+        // Find next avail slot by incrementing index
+            index++;
+        // Wrap around to  beginning if reaches
+        //  end of hash table
+            if (index >= hashTable.size()) {
+                index = 0;
+        }
     }
 
+    // Insert the artist into  found slot*/
     hashTable[index].push_back(artist);
 }
 
+
 std::vector<Artist> HashMap::getArtistsByGenre(std::string genre) {
     int index = hashFunction(genre);
+    std::vector<Artist> matchingArtists;
 
-
-    if (index >= hashTable.size()) {
-        return std::vector<Artist>();
+    for (const auto& artist : hashTable[index]) {
+        if (artist.getGenre() == genre) {
+            matchingArtists.push_back(artist);
+        }
     }
 
-    return hashTable[index];
+    return matchingArtists;
 }
