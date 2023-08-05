@@ -21,7 +21,7 @@ public:
     vector<Artist> Artists();
 };
 
-Database::Database(string file) {
+Database::Database(string file) {//reads in the file and creates artist vector
     ifstream inFile;
     inFile.open(file);
     string line;
@@ -29,23 +29,19 @@ Database::Database(string file) {
     string familiar;
     string name;
     string genre;
-    while(getline(inFile, line)){
-        getline(inFile, familiar, ',');
-        for(int i = 0; i < 5; i++){
-            getline(inFile, line, ',');
-        }
+    string songId;
+    string year;
+    getline(inFile,line);
+    while(getline(inFile, familiar,',')){
         getline(inFile, name, ',');
-        getline(inFile, line, ',');
         getline(inFile, genre, ',');
-        for(int i = 0; i < 25; i++){
-            getline(inFile, line, ',');
-        }
-        artists.push_back(Artist(familiar, name, genre));
+        getline(inFile, songId, ',');
+        getline(inFile, year);
+        artists.push_back(Artist(familiar, name, genre, songId, year));
     }
-    artists.pop_back(); // deletes last element(not sure why but adds the last element twice)
     inFile.close();
 }
 
-vector<Artist> Database::Artists() {
+vector<Artist> Database::Artists() {//returns vector of artist objects
     return artists;
 }

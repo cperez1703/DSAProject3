@@ -1,5 +1,5 @@
 CMakeFiles/dsaproject3.dir/main.cpp.obj: \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\main.cpp \
+ C:\Users\Calvi\CLionProjects\DSAProject3\main.cpp \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
@@ -238,12 +238,12 @@ CMakeFiles/dsaproject3.dir/main.cpp.obj: \
  C:/SFML/include/SFML/Graphics/Sprite.hpp \
  C:/SFML/include/SFML/Graphics/Text.hpp \
  C:/SFML/include/SFML/Graphics/VertexBuffer.hpp \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\Window.h \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\Database.h \
+ C:\Users\Calvi\CLionProjects\DSAProject3\Window.h \
+ C:\Users\Calvi\CLionProjects\DSAProject3\Database.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/fstream \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/fstream.tcc \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\Artist.h \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\RedBlackTree.h \
- C:\Users\Scao0\CLionProjects\DSAProject3\DSAProject3\HashMap.h
+ C:\Users\Calvi\CLionProjects\DSAProject3\Artist.h \
+ C:\Users\Calvi\CLionProjects\DSAProject3\RedBlackTree.h \
+ C:\Users\Calvi\CLionProjects\DSAProject3\HashMap.h
