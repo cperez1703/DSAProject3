@@ -1,11 +1,14 @@
 #include<string>
+#include<vector>
+#include "Artist.h"
+#pragma once
 using namespace std;
 
 class RedBlackTree{
 private:
     struct Node{
-        string genre;
-        vector<Artist> artists;
+        std::string genre;
+        std::vector<Artist> artists;
         Node *left = nullptr;
         Node *right = nullptr;
         bool isRed = true;
@@ -15,6 +18,7 @@ private:
     };
     Node* deepest = nullptr;
     Node* root = nullptr;
+    bool newNode = true;
     Node* insertHelper(Node *node, Artist object, string& genre, Node* parent, Node* grandparent);
 
     // rotations
@@ -25,12 +29,12 @@ public:
     RedBlackTree(vector<Artist> artists);
     void insertGenreNode(string genre, Artist object);
     void fixRedBlackValidity(Node* node, Node* temp);
-//    void searchGenre(string genre);
+    vector<Artist> searchGenre(string genre);
 
 };
 
 
-// constructs red-black tree from the data file IN PROGRESS
+// constructs red-black tree from the data file
 RedBlackTree::RedBlackTree(vector<Artist> objects) {
     root = nullptr;
     for (int i = 0; i < objects.size(); i++) {
@@ -54,14 +58,16 @@ RedBlackTree::Node *RedBlackTree::insertHelper(Node *node, Artist object, string
         deepest = node;
         return node;
     }
-        // if genre node exists
+    // if genre node exists
     else if (genre == node->genre) {
         node->artists.push_back(object);
-        return node;
+        newNode = false;
     }
+    // to the left in bst
     else if (genre < node->genre) {;
         node->left = insertHelper(node->left, object, genre, node, parent);
     }
+    //right in bst
     else if (genre > node->genre) {
         node->right = insertHelper(node->right, object, genre, node, parent);
     }
@@ -76,8 +82,12 @@ void RedBlackTree::RedBlackTree::insertGenreNode(string genre, Artist object) {
         root->grandParent = nullptr;
     }
     else {
+        newNode = true;
         insertHelper(root, object, genre, nullptr, nullptr);
-        fixRedBlackValidity(root, deepest);
+        if(newNode){
+            // starts at deepest node and checks to make sure nothing is violated
+            fixRedBlackValidity(root, deepest);
+        }
         if (root->isRed) {
             root->isRed = false;
         }
@@ -91,7 +101,6 @@ RedBlackTree::Node *RedBlackTree::rotateRight(RedBlackTree::Node *node) {
     node->left = leftChild->right;
     leftChild->right = node;
     node->parent = leftChild;
-
     if (node == root) {
         leftChild->grandParent = nullptr;
         root = leftChild;
@@ -159,3 +168,18 @@ void RedBlackTree::fixRedBlackValidity(RedBlackTree::Node *node, Node *temp) {
         rotateLeft(grandParent);
     }
 }
+
+vector<Artist> RedBlackTree::searchGenre(string genre) {
+    Node* temp = root;
+    while(temp!=nullptr){
+        if(temp->genre == genre){
+            return temp->artists;
+        }
+        if(genre < temp->genre){
+            temp = temp->left;
+        } else {
+            temp = temp->right;
+        }
+    }
+    return {};
+};
