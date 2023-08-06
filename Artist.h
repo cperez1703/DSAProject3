@@ -1,25 +1,19 @@
-#ifndef DSAPROJECT3_ARTIST_H
-#define DSAPROJECT3_ARTIST_H
-
-#include <string>
-using namespace std;
-
-class Artist {
-private:
-    string familiar;
-    string genre;
-    string name;
-    string songId;
-    string year;
-
+#pragma once
+class Artist{ // creates artist objects
 public:
-    Artist(string familiar, string name, string genre, string songId, string year);
-
-    const string& getGenre() const;
-    const string& getName() const;
+    std::string familiar;
+    std::string genre;
+    std::string name;
+    std::string songId;
+    std::string year;
+    Artist(std::string familiar, std::string name, std::string genre, std::string songId, std::string year);
 };
 
-#endif // DSAPROJECT3_ARTIST_H
-
-
+Artist::Artist(std::string familiar, std::string name, std::string genre, std::string songId, std::string year) {
+    this->familiar = familiar;
+    this->name = name;
+    this->genre = genre;
+    this->songId = songId;
+    this->year = year;
+}
 

@@ -7,8 +7,8 @@ using namespace std;
 class RedBlackTree{
 private:
     struct Node{
-        std::string genre;
-        std::vector<Artist> artists;
+        string genre;
+        vector<Artist> artists;
         Node *left = nullptr;
         Node *right = nullptr;
         bool isRed = true;
@@ -34,7 +34,7 @@ public:
 };
 
 
-// constructs red-black tree from the data file
+// constructs red-black tree from the data file IN PROGRESS
 RedBlackTree::RedBlackTree(vector<Artist> objects) {
     root = nullptr;
     for (int i = 0; i < objects.size(); i++) {
@@ -58,16 +58,14 @@ RedBlackTree::Node *RedBlackTree::insertHelper(Node *node, Artist object, string
         deepest = node;
         return node;
     }
-    // if genre node exists
+        // if genre node exists
     else if (genre == node->genre) {
         node->artists.push_back(object);
         newNode = false;
     }
-    // to the left in bst
     else if (genre < node->genre) {;
         node->left = insertHelper(node->left, object, genre, node, parent);
     }
-    //right in bst
     else if (genre > node->genre) {
         node->right = insertHelper(node->right, object, genre, node, parent);
     }
@@ -85,7 +83,6 @@ void RedBlackTree::RedBlackTree::insertGenreNode(string genre, Artist object) {
         newNode = true;
         insertHelper(root, object, genre, nullptr, nullptr);
         if(newNode){
-            // starts at deepest node and checks to make sure nothing is violated
             fixRedBlackValidity(root, deepest);
         }
         if (root->isRed) {

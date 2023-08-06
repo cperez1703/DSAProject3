@@ -6,29 +6,22 @@
 #include "Artist.h"
 #pragma once
 
-
-
 class HashMap {
 private:
-
-
-
-    std::vector<std::list<Artist>> hashTable;
-    //changed to a list so each bucket in hash table can
-    int tableSize;
+    std::vector<std::vector<std::vector<Artist>>> hashTable;
+    int tableSize = 0;
 
 public:
     HashMap(int tableSize);
     int hashFunction(std::string genre);
-    void insert(const Artist& artist);
+    void insert(Artist artist);
     std::vector<Artist> getArtistsByGenre(std::string genre);
 };
 HashMap::HashMap(int size) : tableSize(size) {
     hashTable.resize(tableSize);
 }
 
-
-int HashMap::hashFunction(std::string genre) {
+int HashMap::hashFunction(std::string genre) {//hash function based on ASCII values of string
     int hashedValue = 0;
     for (char i : genre) {
         hashedValue += int(i);
@@ -36,33 +29,25 @@ int HashMap::hashFunction(std::string genre) {
     return hashedValue % tableSize;
 }
 
-void HashMap::insert(const Artist& artist) {
-    int index = hashFunction(artist.getGenre());
-
-        while (!hashTable[index].empty()) {
-        // Find next avail slot by incrementing index
-            index++;
-        // Wrap around to  beginning if reaches
-        //  end of hash table
-            if (index >= hashTable.size()) {
-                index = 0;
+void HashMap::insert(Artist artist) { //inserts artist object into hashmap
+    int index = hashFunction(artist.genre);
+    for(int i = 0; i < hashTable[index].size(); i++){
+        if(hashTable[index][i].front().genre == artist.genre){
+            hashTable[index][i].push_back(artist);
+            return;
         }
     }
-
-    // Insert the artist into  found slot*/
-    hashTable[index].push_back(artist);
+    hashTable[index].push_back({artist});
 }
 
-
-std::vector<Artist> HashMap::getArtistsByGenre(std::string genre) {
+std::vector<Artist> HashMap::getArtistsByGenre(std::string genre) { //finds the artists with searched genre
     int index = hashFunction(genre);
     std::vector<Artist> matchingArtists;
-
-    for (const auto& artist : hashTable[index]) {
-        if (artist.getGenre() == genre) {
-            matchingArtists.push_back(artist);
+    for (int i = 0; i < hashTable[index].size(); i++) {
+        if (hashTable[index][i].front().genre == genre) {
+            for(int j = 0; j < hashTable[index][i].size(); j++)
+            matchingArtists.push_back(hashTable[index][i][j]);
         }
     }
-
     return matchingArtists;
 }
